@@ -40,21 +40,26 @@ public class MainApp {
     }
 
     private static void handleUserChoice(int choice) {
-        switch (choice) {
-            case 1:
-                UserAuthentication.customerLoginAndActions(sc);
-                break;
-            case 2:
-                UserAuthentication.adminLoginAndActions(sc);
-                break;
-            case 3:
-                UserAuthentication.createNewCustomerAccount(sc);
-                break;
-            case 4:
-                // Exit the loop in main method
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+        try {
+            switch (choice) {
+                case 1:
+                    UserAuthentication.customerLoginAndActions(sc);
+                    break;
+                case 2:
+                    UserAuthentication.adminLoginAndActions(sc);
+                    break;
+                case 3:
+                    UserAuthentication.createNewCustomerAccount(sc);
+                    break;
+                case 4:
+                    // Exit the loop in main method
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+        catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
         }
     }
 }
