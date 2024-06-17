@@ -147,13 +147,13 @@ public class UserAuthentication {
             }
 
             while (true) {
-                System.out.println("Choose a password (min 8 characters, include a digit, uppercase, and lowercase letter): ");
+                System.out.println("Choose a password (min 8 characters, include a digit, uppercase, lowercase letter, and a special character): ");
                 password = sc.nextLine();
 
                 if (isValidPassword(password)) {
                     break;
                 } else {
-                    System.out.println("Invalid password. It must be at least 8 characters long and include at least one digit, one uppercase letter, and one lowercase letter.");
+                    System.out.println("Invalid password. It must be at least 8 characters long and include at least one digit, one uppercase letter, one lowercase letter, and one special character.");
                 }
             }
 
@@ -183,14 +183,16 @@ public class UserAuthentication {
         boolean hasDigit = false;
         boolean hasUppercase = false;
         boolean hasLowercase = false;
+        boolean hasSpecialChar = false;
 
         for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) hasDigit = true;
             else if (Character.isUpperCase(c)) hasUppercase = true;
             else if (Character.isLowerCase(c)) hasLowercase = true;
+            else if (!Character.isLetterOrDigit(c)) hasSpecialChar = true;
         }
 
-        return hasDigit && hasUppercase && hasLowercase;
+        return hasDigit && hasUppercase && hasLowercase && hasSpecialChar;
     }
 
     private static boolean addCustomer(Customer customer) {
